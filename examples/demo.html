@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    </head>
+    <body>
+        <button onclick="send()">发送</button>
+        <button onclick="close_()" id="c_o">关闭</button>
+        <input type="text" id="input"><br/>
+
+        <div id="output"></div>
+
+        <script>
+            function output(text,color="skyblue"){
+                console.log("%c"+text,"color:"+color)
+                n = document.createElement("span")
+                n.innerText=text
+                n.style.color=color
+                document.getElementById("output").appendChild(n)
+                document.getElementById("output").appendChild(document.createElement("br"))
+            }
+            function send(){
+                text=document.getElementById("input").value
+                ws.send(text)
+                output("[info][send] "+text,"skyblue")
+            }
+            function close_(){
+                ws.close()
+                output("[info] close","red")
+                document.getElementById("c_o").innerText="连接"
+                document.getElementById("c_o").onclick=open_
+            }
+            function open_(){
+                ws = new WebSocket("ws://127.0.0.1:2333")
+                ws.onopen=function(){
+                    output("[info] open","green")
+                };
+                ws.onmessage=function(e){
+                    output("[info][recv]:"+e.data,"blue")
+                };
+                ws.onclose=function(e){
+                    output("[info] server closed","red")
+                }
+                ws.onerror=function(e){
+                    output("[err]","red")
+                };
+
+                document.getElementById("c_o").innerText="关闭"
+                document.getElementById("c_o").onclick=close_
+            }
+            open_();
+        </script>
+    </body>
+</html>
