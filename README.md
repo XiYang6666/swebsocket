@@ -1,2 +1,2 @@
 # swebsocket
-a python websocket server
+ A python websocket server
