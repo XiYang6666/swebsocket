@@ -1,5 +1,6 @@
 # swebsocket
  A python websocket server
+ 一个websocket 服务端库
 
 create a server
 ```python
