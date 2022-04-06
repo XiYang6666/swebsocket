@@ -32,11 +32,11 @@ class Clients(swebsocket.Clients):
             "headers": {
                 "Upgrade": "websocket",
                 "Connection": "Upgrade",
-                "Sec-WebSocket-Accept": coding.create_accept(request_message["headers"]["Sec-WebSocket-Key"]),
+                "Sec-WebSocket-Accept": swebsocket.coding.create_accept(request_message["headers"]["Sec-WebSocket-Key"]),
                 "WebSocket-Location": request_message["headers"]["Host"],
             },
         }
-        return coding.dict_2_httpMessage(send_message)
+        return swebsocket.coding.dict_2_httpMessage(send_message)
 
     def onmessage(self, message: str | bytes):
         """
@@ -107,7 +107,7 @@ class Clients(swebsocket.Clients):
 
         """
         message = message.encode() if type(message) == type(str()) else message
-        self.socket.sendall(coding.pack(message, **kwarge))
+        self.socket.sendall(swebsocket.coding.pack(message, **kwarge))
         ......
         """
 
@@ -118,7 +118,7 @@ class Clients(swebsocket.Clients):
 
         """
         self.last_ping_time = time.time()
-        self.socket.sendall(coding.pack(opcode=0x9))
+        self.socket.sendall(swebsocket.coding.pack(opcode=0x9))
         ......
         """
 
