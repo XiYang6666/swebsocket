@@ -2,7 +2,7 @@
  A python websocket server
  一个websocket 服务端库
 
-create a server
+create a server<br/>
 使用示例:
 ```python
 #导入该库
@@ -19,7 +19,7 @@ class Clients(swebsocket.Clients):
     def __init__(self,*arge):
         super().__init__(*arge)
 
-    
+    #重写Clients类方法
     def onreceiveRequest(self, request_message):
         """
         收到连接报文
