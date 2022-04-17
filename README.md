@@ -134,9 +134,9 @@ class Clients(swebsocket.Clients):
         断开连接(自己主动断开)
 
         code:
-            0:主动断开
-            1:超时
-            2:错误
+          - 0:主动断开
+          - 1:超时
+          - 2:错误
         """
      
 
