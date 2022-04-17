@@ -3,14 +3,18 @@
  一个websocket 服务端库
 
 create a server
+使用示例:
 ```python
+#导入该库
 import swebsocket
 
+#创建Server类继承swebsocket.Server类并重写方法
 class Server(swebsocket.Server):
     def __init__(self,addr):
         super().__init__(addr)
         self.Clients=Clients
 
+#创建clients类并使Server类的Clients成员属性为Clients类
 class Clients(swebsocket.Clients):
     def __init__(self,*arge):
         super().__init__(*arge)
