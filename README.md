@@ -14,7 +14,7 @@ class Server(swebsocket.Server):
         super().__init__(addr)
         self.Clients=Clients
 
-#创建clients类并使Server类的Clients成员属性为Clients类
+#创建clients类并给Server类的Clients成员属性赋值为Clients类
 class Clients(swebsocket.Clients):
     def __init__(self,*arge):
         super().__init__(*arge)
