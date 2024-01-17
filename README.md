@@ -1,3 +1,5 @@
+屑作, 轻喷)
+
 # swebsocket
  A python websocket server
  一个websocket 服务端库
